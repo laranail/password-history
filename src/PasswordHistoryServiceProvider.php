@@ -86,9 +86,7 @@ class PasswordHistoryServiceProvider extends PackageServiceProvider
             return;
         }
 
-        $node::macro('notReused',
-            /** @phpstan-ignore-next-line $this is the PasswordRule node at call time */
-            fn (?int $keep = null): mixed => $this->rule(new UnusedPassword(keep: $keep)));
+        $node::macro('notReused', fn (?int $keep = null): mixed => $this->rule(new UnusedPassword(keep: $keep)));
     }
 
     private function configPath(): string

@@ -30,3 +30,10 @@ parameters:
         - identifier: argument.type
           path: tests/
           reportUnmatched: false
+        # The macro closure's $this is rebound to the PasswordRule node at
+        # call time (Macroable). Whether larastan reports anything here
+        # depends on which laranail/validation line the dual dev range
+        # resolved, so the ignore must tolerate absence.
+        - identifier: method.notFound
+          path: src/PasswordHistoryServiceProvider.php
+          reportUnmatched: false
