@@ -1,0 +1,17 @@
+# Dependencies
+composer.lock
+/vendor
+auth.json
+
+# Tooling caches
+.phpunit.cache
+.phpunit.result.cache
+.pest
+/build
+
+# OS
+.DS_Store
+
+# Local scratch
+internal/
+.cache/

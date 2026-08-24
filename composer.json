@@ -1,0 +1,102 @@
+{
+    "name": "laranail/password-history",
+    "description": "Prevent reuse of a user's last N passwords — model, migration, trait, pruning command, and a validation rule behind a swappable store.",
+    "keywords": [
+        "laravel",
+        "password",
+        "password-history",
+        "security",
+        "validation"
+    ],
+    "homepage": "https://opensource.simtabi.com/products/laranail/password-history",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Simtabi LLC",
+            "email": "opensource@simtabi.com",
+            "homepage": "https://opensource.simtabi.com",
+            "role": "Organization"
+        },
+        {
+            "name": "Imani Manyara",
+            "email": "imani@simtabi.com",
+            "role": "Maintainer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/laranail/password-history/issues",
+        "source": "https://github.com/laranail/password-history",
+        "docs": "https://opensource.simtabi.com/documentation/laranail/password-history/"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/laranail/package-tools"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/laranail/console"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/laranail/validation"
+        }
+    ],
+    "require": {
+        "php": "^8.4.1 || ^8.5",
+        "illuminate/contracts": "^13.0",
+        "illuminate/database": "^13.0",
+        "illuminate/support": "^13.0",
+        "laranail/console": "^0.1",
+        "laranail/package-tools": "^0.1"
+    },
+    "require-dev": {
+        "larastan/larastan": "^3.9.3",
+        "laravel/pint": "^1.29",
+        "orchestra/testbench": "^11.0",
+        "pestphp/pest": "^3.0 || ^4.4.5",
+        "pestphp/pest-plugin-laravel": "^3.0 || ^4.1",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "rector/rector": "^2.5.8",
+        "roave/security-advisories": "dev-latest"
+    },
+    "suggest": {
+        "laranail/validation": "^1.0 — compose into the fluent password() builder as ->notReused().",
+        "laranail/password-strength": "^0.1 — zxcvbn strength scoring for the same password() chain."
+    },
+    "autoload": {
+        "psr-4": {
+            "Simtabi\\Laranail\\PasswordHistory\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Simtabi\\Laranail\\PasswordHistory\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest",
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G",
+        "format": "vendor/bin/pint"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Simtabi\\Laranail\\PasswordHistory\\PasswordHistoryServiceProvider"
+            ]
+        },
+        "branch-alias": {
+            "dev-main": "0.1.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

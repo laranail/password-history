@@ -1,0 +1,22 @@
+* text=auto eol=lf
+
+*.md diff=markdown
+*.php diff=php
+
+# Lean Composer dist.
+.editorconfig         export-ignore
+.gitattributes        export-ignore
+.github/              export-ignore
+.gitignore            export-ignore
+CHANGELOG.md          export-ignore
+CODE_OF_CONDUCT.md    export-ignore
+CONTRIBUTING.md       export-ignore
+CREDITS.md            export-ignore
+SECURITY.md           export-ignore
+UPGRADING.md          export-ignore
+docs/                 export-ignore
+phpstan.neon.dist     export-ignore
+phpunit.xml.dist      export-ignore
+pint.json             export-ignore
+rector.php            export-ignore
+tests/                export-ignore
