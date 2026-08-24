@@ -59,7 +59,8 @@
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan": "^2.1",
         "rector/rector": "^2.5.8",
-        "roave/security-advisories": "dev-latest"
+        "roave/security-advisories": "dev-latest",
+        "laranail/validation": "^0.1.1 || ^1.0"
     },
     "suggest": {
         "laranail/validation": "^1.0 — compose into the fluent password() builder as ->notReused().",
