@@ -31,11 +31,18 @@ jobs:
             exit 1
           fi
 
-      - name: Create GitHub release
+      # Idempotent: the org's pre-stable model MOVES one tag, and every
+      # move re-fires this workflow — an existing release is updated, not
+      # a collision.
+      - name: Create or update GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" \
-            --title "$GITHUB_REF_NAME" \
-            --notes-file release-body.md \
-            --generate-notes
+          if gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            gh release edit "$GITHUB_REF_NAME" --notes-file release-body.md
+          else
+            gh release create "$GITHUB_REF_NAME" \
+              --title "$GITHUB_REF_NAME" \
+              --notes-file release-body.md \
+              --generate-notes
+          fi
