@@ -32,7 +32,7 @@ provider order.
 
 ## What this package is not
 
-Not a strength check (that is `laranail/password-strength`), not a breach check (that is
+Not a strength check (that is `laranail/password-tools`), not a breach check (that is
 `laranail/validation`'s `uncompromised()`), and not a signup rule — with no user to have a
 history, the rule passes by design.
 

@@ -64,7 +64,7 @@
     },
     "suggest": {
         "laranail/validation": "^1.0 — compose into the fluent password() builder as ->notReused().",
-        "laranail/password-strength": "^0.1 — zxcvbn strength scoring for the same password() chain."
+        "laranail/password-tools": "^0.2 — zxcvbn strength scoring and secure generators for the same password() chain."
     },
     "autoload": {
         "psr-4": {

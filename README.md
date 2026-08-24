@@ -78,7 +78,7 @@ closed** by default — a password change is a security operation.
 
 ## Sister packages
 
-- [`laranail/password-strength`](https://github.com/laranail/password-strength) — zxcvbn strength scoring for the same `password()` chain
+- [`laranail/password-tools`](https://github.com/laranail/password-tools) — zxcvbn scoring and secure generators for the same `password()` chain
 - [`laranail/validation`](https://github.com/laranail/validation) — the fluent rule builder both compose into
 
 ## Contributing & security
