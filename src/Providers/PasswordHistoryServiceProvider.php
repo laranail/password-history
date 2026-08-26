@@ -96,6 +96,6 @@ class PasswordHistoryServiceProvider extends PackageServiceProvider
 
     private function packagePath(string $relative): string
     {
-        return dirname(__DIR__, 2).'/'.$relative;
+        return $this->packagePath('').$relative;
     }
 }
