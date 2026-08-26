@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Simtabi\Laranail\PasswordHistory\Contracts\PasswordHistoryStore;
 use Simtabi\Laranail\PasswordHistory\Models\PasswordHistory;
-use Simtabi\Laranail\PasswordHistory\PasswordHistoryServiceProvider;
+use Simtabi\Laranail\PasswordHistory\Providers\PasswordHistoryServiceProvider;
 use Simtabi\Laranail\PasswordHistory\Rules\UnusedPassword;
 use Simtabi\Laranail\PasswordHistory\Tests\Fixtures\User;
 

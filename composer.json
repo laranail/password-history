@@ -84,7 +84,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Simtabi\\Laranail\\PasswordHistory\\PasswordHistoryServiceProvider"
+                "Simtabi\\Laranail\\PasswordHistory\\Providers\\PasswordHistoryServiceProvider"
             ]
         },
         "branch-alias": {

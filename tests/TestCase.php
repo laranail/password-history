@@ -7,7 +7,7 @@ namespace Simtabi\Laranail\PasswordHistory\Tests;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Simtabi\Laranail\PasswordHistory\PasswordHistoryServiceProvider;
+use Simtabi\Laranail\PasswordHistory\Providers\PasswordHistoryServiceProvider;
 use Simtabi\Laranail\PasswordHistory\Tests\Fixtures\User;
 
 abstract class TestCase extends Orchestra

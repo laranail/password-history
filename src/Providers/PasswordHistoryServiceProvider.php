@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Simtabi\Laranail\PasswordHistory;
+namespace Simtabi\Laranail\PasswordHistory\Providers;
 
 use Simtabi\Laranail\Package\Tools\Package;
 use Simtabi\Laranail\Package\Tools\Providers\PackageServiceProvider;
@@ -96,6 +96,6 @@ class PasswordHistoryServiceProvider extends PackageServiceProvider
 
     private function packagePath(string $relative): string
     {
-        return dirname(__DIR__).'/'.$relative;
+        return dirname(__DIR__, 2).'/'.$relative;
     }
 }
