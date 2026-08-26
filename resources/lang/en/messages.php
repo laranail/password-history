@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * Namespaced `laranail-password-history::`, so publishing lands in
+ * Namespaced `laranail/password-history::`, so publishing lands in
  * lang/vendor/laranail-password-history. The reuse message never says
  * WHICH previous password matched — the rule is not an oracle.
  */

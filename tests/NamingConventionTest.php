@@ -30,7 +30,7 @@ it('reads configuration only from the flat org key', function (): void {
 });
 
 it('resolves translations only under the vendored namespace', function (): void {
-    $namespaced = 'laranail-password-history::messages.reused';
+    $namespaced = 'laranail/password-history::messages.reused';
     $bare = 'password-history::messages.reused';
 
     expect(trans($namespaced))->not->toBe($namespaced)

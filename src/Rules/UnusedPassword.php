@@ -72,13 +72,13 @@ final class UnusedPassword implements DataAwareRule, ValidationRule
                 return;
             }
 
-            $fail($this->message ?? 'laranail-password-history::messages.unavailable')->translate();
+            $fail($this->message ?? 'laranail/password-history::messages.unavailable')->translate();
 
             return;
         }
 
         if ($used) {
-            $fail($this->message ?? 'laranail-password-history::messages.reused')->translate();
+            $fail($this->message ?? 'laranail/password-history::messages.reused')->translate();
         }
     }
 
