@@ -93,9 +93,4 @@ class PasswordHistoryServiceProvider extends PackageServiceProvider
     {
         return $this->packagePath('config/laranail-password-history.php');
     }
-
-    private function packagePath(string $relative): string
-    {
-        return $this->packagePath('').$relative;
-    }
 }
