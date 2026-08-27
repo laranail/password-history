@@ -60,7 +60,7 @@
         "phpstan/phpstan": "^2.1",
         "rector/rector": "^2.5.8",
         "roave/security-advisories": "dev-latest",
-        "laranail/validation": "^0.1.1 || ^1.0"
+        "laranail/validation": "^0.1"
     },
     "suggest": {
         "laranail/validation": "^1.0 — compose into the fluent password() builder as ->notReused().",
