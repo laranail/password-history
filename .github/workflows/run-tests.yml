@@ -26,6 +26,14 @@ jobs:
           extensions: dom, curl, libxml, mbstring, zip, fileinfo, pdo_sqlite, sqlite3
           coverage: none
 
+      # laranail/validation is PHP ^8.5. It is a DEV dependency for the bridge
+      # tests only -- this package itself supports 8.4, and every bridge test
+      # already skips itself via class_exists(). Removing it here keeps the 8.4
+      # cell honest rather than dropping 8.4 from the matrix.
+      - name: Drop the 8.5-only bridge dependency on PHP 8.4
+        if: matrix.php == '8.4'
+        run: composer remove --dev laranail/validation --no-update
+
       - name: Install dependencies
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
