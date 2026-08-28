@@ -74,7 +74,7 @@
     },
     "suggest": {
         "laranail/validation": "^1.0 \u2014 compose into the fluent password() builder as ->notReused().",
-        "laranail/password-tools": "^0.2 \u2014 zxcvbn strength scoring and secure generators for the same password() chain."
+        "laranail/password-tools": "^0.1 \u2014 zxcvbn strength scoring and secure generators for the same password() chain."
     },
     "autoload": {
         "psr-4": {
