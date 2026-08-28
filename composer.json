@@ -40,6 +40,16 @@
         {
             "type": "vcs",
             "url": "https://github.com/laranail/validation"
+        },
+        {
+            "type": "composer",
+            "url": "https://repo.packagist.org",
+            "exclude": [
+                "laranail/*"
+            ]
+        },
+        {
+            "packagist.org": false
         }
     ],
     "require": {
