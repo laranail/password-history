@@ -21,9 +21,9 @@ use Illuminate\Database\Eloquent\Relations\MorphTo;
  */
 class PasswordHistory extends Model
 {
-    protected $guarded = [];
-
     public $timestamps = false;
+
+    protected $guarded = [];
 
     protected $casts = [
         'created_at' => 'datetime',

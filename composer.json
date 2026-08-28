@@ -1,6 +1,6 @@
 {
     "name": "laranail/password-history",
-    "description": "Prevent reuse of a user's last N passwords — model, migration, trait, pruning command, and a validation rule behind a swappable store.",
+    "description": "Prevent reuse of a user's last N passwords \u2014 model, migration, trait, pruning command, and a validation rule behind a swappable store.",
     "keywords": [
         "laravel",
         "password",
@@ -63,8 +63,8 @@
         "laranail/validation": "^0.1"
     },
     "suggest": {
-        "laranail/validation": "^1.0 — compose into the fluent password() builder as ->notReused().",
-        "laranail/password-tools": "^0.2 — zxcvbn strength scoring and secure generators for the same password() chain."
+        "laranail/validation": "^1.0 \u2014 compose into the fluent password() builder as ->notReused().",
+        "laranail/password-tools": "^0.2 \u2014 zxcvbn strength scoring and secure generators for the same password() chain."
     },
     "autoload": {
         "psr-4": {
@@ -79,7 +79,13 @@
     "scripts": {
         "test": "vendor/bin/pest",
         "phpstan": "vendor/bin/phpstan analyse --memory-limit=2G",
-        "format": "vendor/bin/pint"
+        "format": "@pint-fix",
+        "pint": "vendor/bin/pint --test --config vendor/laranail/package-tools/pint.json",
+        "pint-fix": "vendor/bin/pint --parallel --config vendor/laranail/package-tools/pint.json",
+        "lint": [
+            "@pint",
+            "@phpstan"
+        ]
     },
     "extra": {
         "laravel": {
