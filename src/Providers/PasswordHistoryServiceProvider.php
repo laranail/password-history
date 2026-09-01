@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Simtabi\Laranail\PasswordHistory\Providers;
 
 use Simtabi\Laranail\Package\Tools\Package;
-use Simtabi\Laranail\PasswordHistory\Rules\UnusedPassword;
-use Simtabi\Laranail\PasswordHistory\Commands\PruneCommand;
 use Simtabi\Laranail\Package\Tools\Providers\PackageServiceProvider;
+use Simtabi\Laranail\PasswordHistory\Commands\PruneCommand;
 use Simtabi\Laranail\PasswordHistory\Contracts\PasswordHistoryStore;
 use Simtabi\Laranail\PasswordHistory\Observers\PasswordChangeObserver;
+use Simtabi\Laranail\PasswordHistory\Rules\UnusedPassword;
 use Simtabi\Laranail\PasswordHistory\Stores\EloquentPasswordHistoryStore;
 
 class PasswordHistoryServiceProvider extends PackageServiceProvider

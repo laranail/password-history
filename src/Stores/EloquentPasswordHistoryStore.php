@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Simtabi\Laranail\PasswordHistory\Stores;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Simtabi\Laranail\PasswordHistory\Models\PasswordHistory;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Simtabi\Laranail\PasswordHistory\Contracts\PasswordHistoryStore;
+use Simtabi\Laranail\PasswordHistory\Models\PasswordHistory;
 
 /**
  * The default store over the shipped model. `record()` prunes inline to
@@ -33,9 +33,9 @@ final class EloquentPasswordHistoryStore implements PasswordHistoryStore
     public function record(Authenticatable $user, string $hash): void
     {
         $model = new PasswordHistory([
-            'user_type'  => $user instanceof Model ? $user->getMorphClass() : $user::class,
-            'user_id'    => $user->getAuthIdentifier(),
-            'hash'       => $hash,
+            'user_type' => $user instanceof Model ? $user->getMorphClass() : $user::class,
+            'user_id' => $user->getAuthIdentifier(),
+            'hash' => $hash,
             'created_at' => now(),
         ]);
         $model->save();
