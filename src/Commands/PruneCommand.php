@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Simtabi\Laranail\PasswordHistory\Commands;
 
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Simtabi\Laranail\Console\Tools\Commands\Command;
-use Simtabi\Laranail\Console\Tools\Commands\Concerns\SupportsNamespacedNames;
 use Simtabi\Laranail\PasswordHistory\Contracts\PasswordHistoryStore;
+use Simtabi\Laranail\Console\Tools\Commands\Concerns\SupportsNamespacedNames;
 
 /**
  * Keep-N pruning as a schedulable command. Pruning is a privacy control
@@ -58,7 +58,7 @@ final class PruneCommand extends Command
             $users++;
         }
 
-        $this->info("Pruned {$removed} entr".($removed === 1 ? 'y' : 'ies')." across {$users} user".($users === 1 ? '' : 's').", keeping {$keep} per user.");
+        $this->info("Pruned {$removed} entr" . ($removed === 1 ? 'y' : 'ies') . " across {$users} user" . ($users === 1 ? '' : 's') . ", keeping {$keep} per user.");
 
         return self::SUCCESS;
     }

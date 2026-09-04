@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Simtabi\Laranail\PasswordHistory\Tests;
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Simtabi\Laranail\PasswordHistory\Providers\PasswordHistoryServiceProvider;
 use Simtabi\Laranail\PasswordHistory\Tests\Fixtures\User;
+use Simtabi\Laranail\PasswordHistory\Providers\PasswordHistoryServiceProvider;
 
 abstract class TestCase extends Orchestra
 {
@@ -37,7 +37,7 @@ abstract class TestCase extends Orchestra
     {
         $app['config']->set('database.default', 'testing');
         $app['config']->set('database.connections.testing', [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => ':memory:',
         ]);
         // bcrypt at minimum cost: these tests hash constantly and assert
