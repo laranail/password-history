@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Simtabi\Laranail\PasswordHistory\Contracts\PasswordHistoryStore;
-use Simtabi\Laranail\PasswordHistory\Models\PasswordHistory;
-use Simtabi\Laranail\PasswordHistory\Providers\PasswordHistoryServiceProvider;
-use Simtabi\Laranail\PasswordHistory\Rules\UnusedPassword;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Simtabi\Laranail\PasswordHistory\Tests\Fixtures\User;
+use Simtabi\Laranail\PasswordHistory\Rules\UnusedPassword;
+use Simtabi\Laranail\PasswordHistory\Models\PasswordHistory;
+use Simtabi\Laranail\PasswordHistory\Contracts\PasswordHistoryStore;
+use Simtabi\Laranail\PasswordHistory\Providers\PasswordHistoryServiceProvider;
 
 function makeUser(string $password = 'current-secret'): User
 {
     return User::create([
-        'email' => 'alice@example.com',
+        'email'    => 'alice@example.com',
         'password' => Hash::make($password),
     ]);
 }

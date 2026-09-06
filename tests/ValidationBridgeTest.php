@@ -5,9 +5,9 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Simtabi\Laranail\Validation\FluentRule;
 use Simtabi\Laranail\PasswordHistory\Tests\Fixtures\User;
 use Simtabi\Laranail\Validation\Builder\Nodes\PasswordRule;
-use Simtabi\Laranail\Validation\FluentRule;
 
 /**
  * The §4.2 bridge, proven end to end: with laranail/validation installed,

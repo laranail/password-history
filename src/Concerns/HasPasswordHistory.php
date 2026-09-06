@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Simtabi\Laranail\PasswordHistory\Concerns;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Support\Facades\Hash;
-use Simtabi\Laranail\PasswordHistory\Contracts\PasswordHistoryStore;
 use Simtabi\Laranail\PasswordHistory\Models\PasswordHistory;
+use Simtabi\Laranail\PasswordHistory\Contracts\PasswordHistoryStore;
 
 /**
  * For the User model: the relation plus the record/check/prune helpers,

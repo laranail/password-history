@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Simtabi\Laranail\PasswordHistory\Rules;
 
 use Closure;
+use Throwable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Contracts\Validation\DataAwareRule;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use Simtabi\Laranail\PasswordHistory\Contracts\PasswordHistoryStore;
-use Throwable;
 
 /**
  * Fails when the candidate matches one of the user's last N password
