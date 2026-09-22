@@ -1,9 +1,10 @@
 # laranail/password-history
 
-[![Latest version on Packagist](https://img.shields.io/packagist/v/laranail/password-history.svg)](https://packagist.org/packages/laranail/password-history)
 [![Tests](https://github.com/laranail/password-history/actions/workflows/run-tests.yml/badge.svg)](https://github.com/laranail/password-history/actions/workflows/run-tests.yml)
 [![Static analysis](https://github.com/laranail/password-history/actions/workflows/phpstan.yml/badge.svg)](https://github.com/laranail/password-history/actions/workflows/phpstan.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+`laranail/password-history` is not published to Packagist, so there is no registry-version badge to show — see [Install](#install).
 
 > Prevent a user from reusing their last N passwords — a validation rule, a model + migration, a user-model trait, and a schedulable pruning command, all behind a swappable store.
 
