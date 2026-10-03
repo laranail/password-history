@@ -20,7 +20,20 @@ php artisan migrate
 laranail packages resolve through git VCS repositories — see [Installation](docs/installation.md)
 for the `repositories` entries.
 
-## Quick start
+## Quick start guide and usage
+
+### Getting started
+
+1. Add the `HasPasswordHistory` trait to your user model, as in the second example below. The
+   `php artisan migrate` from Install has already created the `password_histories` table.
+2. Optionally publish the config to change how many hashes are kept
+   (`LARANAIL_PASSWORD_HISTORY_KEEP`, default `5`):
+
+   ```bash
+   php artisan vendor:publish --tag=laranail::password-history-config
+   ```
+
+### Usage
 
 ```php
 use Simtabi\Laranail\PasswordHistory\Rules\UnusedPassword;
