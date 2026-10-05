@@ -10,6 +10,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - **`suggest` named `laranail/validation ^1.0`, which resolves nothing.** `v1.0.0` was withdrawn in the floor-to-`v0.1.0` reset; the only tag on the remote is the moving `v0.1.0`, so the suggestion now reads `^0.1`. Composer never resolves a suggestion, so no CI run could catch it.
 
+### Added
+
+- The `phpstan` workflow also runs `composer pint` (`laranail-pint --test` against the shared
+  config). Nothing in CI checked formatting before, so a pull request could merge unformatted.
+
 ## v0.1.0 - 2026-08-24
 
 Initial release.

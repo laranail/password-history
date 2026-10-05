@@ -45,3 +45,13 @@ jobs:
       - run: composer update --prefer-dist --no-interaction
 
       - run: vendor/bin/phpstan analyse --memory-limit=2G --error-format=github
+
+      # laranail-pint --test against the one shared config in
+      # vendor/laranail/package-tools. Bare `pint` would fall back to its own
+      # defaults and exit 0, reporting "clean" against a rule set no other package
+      # here uses. `composer pint` rather than `composer lint`, because lint also
+      # runs PHPStan, which the step above already does. Runs even when PHPStan
+      # failed, so one pull request reports both.
+      - name: Check formatting
+        if: ${{ !cancelled() }}
+        run: composer pint
