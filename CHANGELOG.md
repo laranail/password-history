@@ -6,6 +6,15 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and 
 adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+### Changed
+
+- **Test credentials are generated at run time.** Every password the suite used to spell out is
+  now `TestCredentials::password('<purpose>')`, so no literal a secret scanner would report reaches
+  the repository, and `tests/Architecture/NoLiteralCredentialsTest.php` fails on any literal added
+  later. The `laranail/package-tools` floor is now `^0.1.9`, the first release with
+  `TestCredentials` and the guard.
+
 ### Fixed
 
 - **`suggest` named `laranail/validation ^1.0`, which resolves nothing.** `v1.0.0` was withdrawn in the floor-to-`v0.1.0` reset; the only tag on the remote is the moving `v0.1.0`, so the suggestion now reads `^0.1`. Composer never resolves a suggestion, so no CI run could catch it.
