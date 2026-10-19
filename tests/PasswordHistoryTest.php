@@ -38,9 +38,9 @@ it('generates a distinct password for every purpose these tests tell apart', fun
     // Each "is not reused" expectation below depends on its candidate differing from the
     // history it is checked against, so the generated values must never coincide.
     $purposes = [
-        'current', 'old-one', 'old-two', 'genuinely-new', 'ancient', 'older', 'newest', 'anything',
-        'brand-new', 'fresh', 'candidate', 'archived', 'never-used', 'plaintext', 'first', 'second',
-        'remembered-elsewhere',
+        'current', 'former', 'previous', 'novel', 'ancient', 'older', 'newest', 'anything',
+        'pristine', 'fresh', 'candidate', 'archived', 'unused', 'plaintext', 'first', 'second',
+        'foreign',
     ];
 
     $passwords = array_map(TestCredentials::password(...), $purposes);
@@ -50,12 +50,12 @@ it('generates a distinct password for every purpose these tests tell apart', fun
 
 it('rejects a password from the recorded history', function (): void {
     $user = makeUser();
-    $user->recordPassword(Hash::make(TestCredentials::password('old-one')));
-    $user->recordPassword(Hash::make(TestCredentials::password('old-two')));
+    $user->recordPassword(Hash::make(TestCredentials::password('former')));
+    $user->recordPassword(Hash::make(TestCredentials::password('previous')));
 
-    expect(passes(new UnusedPassword(user: $user), TestCredentials::password('old-one')))->toBeFalse()
-        ->and(passes(new UnusedPassword(user: $user), TestCredentials::password('old-two')))->toBeFalse()
-        ->and(passes(new UnusedPassword(user: $user), TestCredentials::password('genuinely-new')))->toBeTrue();
+    expect(passes(new UnusedPassword(user: $user), TestCredentials::password('former')))->toBeFalse()
+        ->and(passes(new UnusedPassword(user: $user), TestCredentials::password('previous')))->toBeFalse()
+        ->and(passes(new UnusedPassword(user: $user), TestCredentials::password('novel')))->toBeTrue();
 });
 
 it('rejects the CURRENT password — changing to what you already have is not a change', function (): void {
@@ -87,7 +87,7 @@ it('resolves the authenticated user when none is given', function (): void {
     Auth::setUser($user);
 
     expect(passes(new UnusedPassword, TestCredentials::password('current')))->toBeFalse()
-        ->and(passes(new UnusedPassword, TestCredentials::password('brand-new')))->toBeTrue();
+        ->and(passes(new UnusedPassword, TestCredentials::password('pristine')))->toBeTrue();
 });
 
 it('resolves the user from a form field for admin-reset flows', function (): void {
@@ -101,16 +101,16 @@ it('resolves the user from a form field for admin-reset flows', function (): voi
 
 it('never reveals which previous password matched', function (): void {
     $user = makeUser();
-    $user->recordPassword(Hash::make(TestCredentials::password('old-one')));
+    $user->recordPassword(Hash::make(TestCredentials::password('former')));
 
     $validator = Validator::make(
-        ['password' => TestCredentials::password('old-one')],
+        ['password' => TestCredentials::password('former')],
         ['password' => [new UnusedPassword(user: $user)]],
     );
 
     $message = $validator->errors()->first('password');
 
-    expect($message)->not->toContain(TestCredentials::password('old-one'))
+    expect($message)->not->toContain(TestCredentials::password('former'))
         ->and($message)->toContain('used recently');
 });
 
@@ -155,7 +155,6 @@ it('fails CLOSED when the store errors — a password change is a security opera
 });
 
 it('degrades only when the application explicitly opts in', function (): void {
-    // @credential-literal-exempt: a config mode under the package's own key, not a credential
     config()->set('laranail.password-history.on_store_error', 'degrade');
     $user = makeUser();
     app()->instance(PasswordHistoryStore::class, new BrokenStore);
@@ -169,7 +168,7 @@ it('degrades only when the application explicitly opts in', function (): void {
 
 it('records idempotently — the newest hash is never doubled', function (): void {
     $user = makeUser();
-    $hash = Hash::make(TestCredentials::password('old-one'));
+    $hash = Hash::make(TestCredentials::password('former'));
 
     $user->recordPassword($hash);
     $user->recordPassword($hash);
@@ -195,12 +194,12 @@ it('answers hasUsedPassword without a validator in sight', function (): void {
 
     expect($user->hasUsedPassword(TestCredentials::password('archived')))->toBeTrue()
         ->and($user->hasUsedPassword(TestCredentials::password('current')))->toBeTrue()
-        ->and($user->hasUsedPassword(TestCredentials::password('never-used')))->toBeFalse();
+        ->and($user->hasUsedPassword(TestCredentials::password('unused')))->toBeFalse();
 });
 
 it('purges the whole history when the user is deleted', function (): void {
     $user = makeUser();
-    $user->recordPassword(Hash::make(TestCredentials::password('old-one')));
+    $user->recordPassword(Hash::make(TestCredentials::password('former')));
     expect(PasswordHistory::query()->count())->toBe(1);
 
     $user->delete();
@@ -330,8 +329,8 @@ it('speaks only the store contract — a fake store carries the whole rule', fun
     };
 
     app()->instance(PasswordHistoryStore::class, $fake);
-    $fake->record($user, Hash::make(TestCredentials::password('remembered-elsewhere')));
+    $fake->record($user, Hash::make(TestCredentials::password('foreign')));
 
-    expect(passes(new UnusedPassword(user: $user), TestCredentials::password('remembered-elsewhere')))->toBeFalse()
+    expect(passes(new UnusedPassword(user: $user), TestCredentials::password('foreign')))->toBeFalse()
         ->and(PasswordHistory::query()->count())->toBe(0);
 });

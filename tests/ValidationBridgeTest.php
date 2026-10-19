@@ -35,11 +35,11 @@ it('rejects reuse through the fluent chain, end to end', function (): void {
     $rules = ['password' => [FluentRule::password(defaults: false)->notReused()]];
 
     // The last expectation passes only because the new password is neither of the others.
-    expect(TestCredentials::password('genuinely-new'))
+    expect(TestCredentials::password('novel'))
         ->not->toBe(TestCredentials::password('archived'))
         ->not->toBe(TestCredentials::password('current'));
 
     expect(Validator::make(['password' => TestCredentials::password('archived')], $rules)->passes())->toBeFalse()
         ->and(Validator::make(['password' => TestCredentials::password('current')], $rules)->passes())->toBeFalse()
-        ->and(Validator::make(['password' => TestCredentials::password('genuinely-new')], $rules)->passes())->toBeTrue();
+        ->and(Validator::make(['password' => TestCredentials::password('novel')], $rules)->passes())->toBeTrue();
 });

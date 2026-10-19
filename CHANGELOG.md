@@ -9,11 +9,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Changed
 
-- **Test credentials are generated at run time.** Every password the suite used to spell out is
-  now `TestCredentials::password('<purpose>')`, so no literal a secret scanner would report reaches
-  the repository, and `tests/Architecture/NoLiteralCredentialsTest.php` fails on any literal added
-  later. The `laranail/package-tools` floor is now `^0.1.9`, the first release with
-  `TestCredentials` and the guard.
+- **Test credentials are generated at run time.** Every password the suite used to spell out is now
+  `TestCredentials::password('<purpose>')`, so no literal a secret scanner would report reaches the
+  repository, and `tests/Architecture/NoLiteralCredentialsTest.php` fails on any literal added
+  later. The `laranail/package-tools` floor is now `^0.1.10`, and a second check keeps every purpose
+  passed to `TestCredentials` a single plain word, since a secret scanner reads a compound purpose
+  as the password itself.
 
 ### Fixed
 
