@@ -18,6 +18,10 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **Windows CI installs the current PHP patch.** setup-php reused the PHP the Windows image
+  ships (8.5.11) after 8.5.12 fixed a security issue, so `roave/security-advisories` refused
+  to install and every pull request failed its Windows legs. The step now passes
+  `update: true` off Linux, so it upgrades to the latest patch.
 - **`suggest` named `laranail/validation ^1.0`, which resolves nothing.** `v1.0.0` was withdrawn in the floor-to-`v0.1.0` reset; the only tag on the remote is the moving `v0.1.0`, so the suggestion now reads `^0.1`. Composer never resolves a suggestion, so no CI run could catch it.
 
 ### Added
