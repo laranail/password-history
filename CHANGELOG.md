@@ -18,6 +18,14 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- **A moved tag no longer leaves its GitHub release unpublished.** Deleting a tag reverts its release
+  to a *draft*, and moving `v0.1.0` goes through a delete-then-push wherever `git push --force` is
+  unavailable. `gh release edit` leaves that flag exactly as it finds it, so the run that follows the
+  move goes **green** having republished nothing: correct tag, invisible release. Nothing else reports
+  that state either — the tag resolves, `composer` installs, and the tag-currency check passes, because
+  none of them reads the release. Measured 2026-11-08 in `laranail/validation-js`, whose release had to
+  be published by hand. `release.yml` now passes `--draft=false`, and
+  `tests/ReleaseWorkflowTest.php` fails if any workflow's `gh release edit` drops it.
 - **Windows CI installs the current PHP patch.** setup-php reused the PHP the Windows image
   ships (8.5.11) after 8.5.12 fixed a security issue, so `roave/security-advisories` refused
   to install and every pull request failed its Windows legs. The step now passes
