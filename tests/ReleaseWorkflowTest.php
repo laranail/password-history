@@ -19,8 +19,18 @@ declare(strict_types=1);
 /** @return list<string> every `gh release edit` command in the repository's workflows, labelled by file */
 function releaseEditCommands(): array
 {
-    $dir = dirname(__DIR__) . '/.github/workflows';
-    $files = [...glob($dir . '/*.yml') ?: [], ...glob($dir . '/*.yaml') ?: []];
+    $dir = __DIR__ . '/../.github/workflows';
+    $files = [];
+
+    // glob() answers false on failure, so each result is checked rather than coalesced: validation's
+    // PHPStan config forbids the short ternary, and the copies in the family keep one shape.
+    foreach (['*.yml', '*.yaml'] as $pattern) {
+        $matched = glob($dir . '/' . $pattern);
+
+        if (is_array($matched)) {
+            $files = [...$files, ...$matched];
+        }
+    }
 
     // A glob that stops matching must fail here rather than report a clean sweep.
     expect(count($files))->toBeGreaterThanOrEqual(4);
@@ -49,7 +59,5 @@ it('clears the draft flag on every release edit, because deleting a tag sets it'
     // Non-vacuity: no match at all means the matcher broke, not that the workflows are clean.
     expect($commands)->not->toBeEmpty('no gh release edit was found -- check the matcher, not the workflows');
 
-    foreach ($commands as $command) {
-        expect($command)->toContain('--draft=false');
-    }
+    expect($commands)->each->toContain('--draft=false');
 });
